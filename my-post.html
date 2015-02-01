@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>rains blog | rain's blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="qiu" />
+    <meta name="kittycheck_rumble" content="true" />
+    <meta name="kittycheck_position" content="top=60,right=60" />
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-2 {
+        font-size: 8pt;
+      }
+      .tag-4 {
+        font-size: 6pt;
+     }
+    </style>
+    <link href="/theme/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/theme/css/font-awesome.css" rel="stylesheet">
+    <link href="/theme/css/pygments.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="/theme/img/favicon.ico">
+    <link rel="apple-touch-icon" href="/theme/img/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/theme/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/theme/img/apple-touch-icon-114x114.png">
+
+    <link href="/" type="application/atom+xml" rel="alternate" title="rain's blog ATOM Feed" />
+    <link href="/feeds/all.rss.xml" type="application/atom+xml" rel="alternate" title="rain's blog RSS Feed" />
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/index.html">rain's blog </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                <li class="divider-vertical"></li>
+                <li class="active">
+                  <a href="/category/python.html">
+						        <i class="icon-folder-open icon-large"></i>Python
+					         </a>
+                </li>
+              <ul class="nav pull-right">
+                    <li><a href="/archives.html"><i class="icon-th-list"></i>Archives</a></li>
+              </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="span8" id="content">
+<div class="row">
+    <div class="span2">
+        <div class="well">
+<footer class="post-info">
+<abbr class="published" title="2015-02-03T10:20:00+08:00">
+    <i class="icon-calendar"></i>&nbsp;Tue 03 February 2015
+</abbr>
+<br/><a href="/author/rain.html"><i class="icon-user"></i>&nbsp;rain</a>
+
+
+<br/>
+	&nbsp;&nbsp;<a href="/tag/pelican.html" class="label"><i class="icon-tag"></i>&nbsp;Pelican</a>
+	&nbsp;&nbsp;<a href="/tag/python.html" class="label"><i class="icon-tag"></i>&nbsp;Python</a>
+	&nbsp;&nbsp;<a href="/tag/github.html" class="label"><i class="icon-tag"></i>&nbsp;GitHub</a>
+	&nbsp;&nbsp;<a href="/tag/git.html" class="label"><i class="icon-tag"></i>&nbsp;Git</a>
+	&nbsp;&nbsp;<a href="/tag/blog.html" class="label"><i class="icon-tag"></i>&nbsp;Blog</a>
+</footer><!-- /.post-info -->        </div>
+    </div>
+    <div class="span6">
+<section id="content" class="well">
+    <article>
+        <header>
+            <h1>
+                <a href=""
+                        rel="bookmark"
+                        title="Permalink to rains blog">
+                        rains blog
+                </a>
+            </h1>
+        </header>
+        <div class="entry-content">
+
+        <h2>菜鸟零基础使用pelican成功在github上搭建博客(这个版本绝对靠谱，修复了网上很多教程的错误，而且也很详尽)</h2>
+<p>由于工作的原因，接触了pelican，发现它很方便，于是菜鸟就有了以下的折腾：</p>
+<h3>Pelican</h3>
+<p><strong>Pelican是一个用Python语言编写的静态网站生成器，</strong>支持使用restructuredText和Markdown写文章，配置灵活，扩展性强。目前Pelican已发布3.5.0版本，有许多优秀的主题和插件可供使用(对于增强blog效果很好使)。先安装好pelican和git，这两个软件的安装很简单，git直接用apt-get安装，pelican是用python开发的，直接用pip安装就行.</p>
+<p>+ apt-get install git
++ pip install pelican #如果还有菜鸟像我一样不知道pip是什么的，应该去了解一下，这里就不累述了，毕竟不是这里讨论的重点</p>
+<div class="highlight"><pre>注：直接pip安装的pelican版本是3.5.0，默认的theme是simple，不支持disqus三方评论系统，这个小插曲害惨我了，后面再说
+</pre></div>
+
+
+<h3>利用pelican快速构建本地blog</h3>
+<div class="highlight"><pre>    <span class="mf">1.</span><span class="err">选择一个</span><span class="n">blog</span><span class="err">目录，用命令</span><span class="n">pelican</span><span class="o">-</span><span class="n">quickstart</span><span class="err">初始化一个网站结构出来</span><span class="p">(</span><span class="err">按照提示一步步走</span><span class="p">)</span><span class="err">，运行命令之后，应该会有以下有效文件：</span>
+
+    <span class="err">    </span><span class="n">cache</span><span class="err">    </span><span class="n">develop_server</span><span class="p">.</span><span class="n">sh</span><span class="err">  </span><span class="n">Makefile</span><span class="err">  </span><span class="n">pelicanconf</span><span class="p">.</span><span class="n">py</span><span class="err">   </span><span class="n">pelican</span><span class="p">.</span><span class="n">pid</span><span class="err">      </span><span class="n">publishconf</span><span class="p">.</span><span class="n">py</span>
+    <span class="err">    </span><span class="n">content</span><span class="err">  </span><span class="n">fabfile</span><span class="p">.</span><span class="n">py</span><span class="err">         </span><span class="n">output</span><span class="err">    </span><span class="n">pelicanconf</span><span class="p">.</span><span class="n">pyc</span><span class="err">  </span><span class="n">pelican</span><span class="o">-</span><span class="n">plugins</span><span class="err">  </span><span class="n">srv</span><span class="p">.</span><span class="n">pid</span>
+
+    <span class="err">这些文件盒目录大概都是什么作用的呢，以下简单说明一下</span><span class="o">:</span>
+
+    <span class="o">&gt;</span><span class="err"> </span><span class="n">content</span><span class="err">这里是放置你的博文的，例如我的</span><span class="n">rain</span><span class="p">.</span><span class="n">md</span><span class="err">文章；</span>
+
+    <span class="o">&gt;</span><span class="err"> </span><span class="n">pages</span><span class="err">是让用户可以自己定制些页面，比如</span><span class="n">aboutme</span><span class="p">.</span><span class="n">md</span><span class="err">等等页面；</span>
+
+    <span class="o">&gt;</span><span class="err"> </span><span class="n">output</span><span class="err">这个目录下放置的就是一会利用</span><span class="n">pelican</span><span class="err">生成的静态博客内容，当然是</span><span class="n">html</span><span class="err">的；</span>
+
+    <span class="o">&gt;</span><span class="err"> </span><span class="n">pelicanconf</span><span class="p">.</span><span class="n">py</span><span class="err">，是博客的配置文件，后面慢慢讲；</span>
+
+    <span class="o">&gt;</span><span class="err"> </span><span class="n">Makefile</span><span class="err">，</span><span class="n">make</span><span class="err">命令的配置文件，如果你懂</span><span class="n">linux</span><span class="err">的源码编译安装软件，这个就很熟了，不过不懂也没事，楼主也不懂，</span><span class="n">pelican</span><span class="err">就是可以让像我这样的菜鸟也可以自己搭建</span><span class="n">blog</span>
+
+    <span class="o">&gt;</span><span class="err"> </span><span class="n">develop_server</span><span class="p">.</span><span class="n">sh</span> <span class="err">本地服务的脚本</span><span class="p">,</span><span class="err">后面可以接参数</span><span class="n">start</span><span class="o">|</span><span class="n">stop</span><span class="o">|</span><span class="n">restart</span> <span class="p">[</span><span class="n">Port</span><span class="p">]</span><span class="err">默认是</span><span class="mi">8000</span><span class="err">号端口</span>
+
+    <span class="mf">2.</span><span class="err">在</span><span class="n">content</span><span class="err">目录下新建博文</span><span class="o">--</span><span class="n">rain</span><span class="p">.</span><span class="nl">md</span><span class="p">:</span>
+
+            <span class="nl">Title</span><span class="p">:</span> <span class="n">rain</span><span class="err">&#39;</span><span class="n">s</span> <span class="n">blog</span>
+
+                    <span class="nl">Date</span><span class="p">:</span> <span class="mi">2015</span><span class="o">-</span><span class="mo">02</span><span class="o">-</span><span class="mo">03</span> <span class="mi">10</span><span class="o">:</span><span class="mi">20</span>
+
+                            <span class="nl">Category</span><span class="p">:</span> <span class="n">Python</span>
+
+                                    <span class="nl">Tags</span><span class="p">:</span> <span class="n">Pelican</span><span class="p">,</span> <span class="n">Python</span><span class="p">,</span> <span class="n">GitHub</span><span class="p">,</span> <span class="n">Git</span><span class="p">,</span> <span class="n">Blog</span>
+
+                                            <span class="nl">Slug</span><span class="p">:</span> <span class="n">my</span><span class="o">-</span><span class="n">post</span>
+
+                                                    <span class="nl">Author</span><span class="p">:</span> <span class="n">rain</span>
+
+                                                            <span class="nl">Summary</span><span class="p">:</span> <span class="n">a</span> <span class="n">blog</span> <span class="k">for</span> <span class="n">pelican</span> <span class="n">on</span> <span class="n">GitHub</span>
+
+                                                                <span class="o">**</span><span class="n">Pelican</span><span class="err">是一个用</span><span class="n">Python</span><span class="err">语言编写的静态网站生成器，</span><span class="o">**</span><span class="err">支持使用</span><span class="n">restructuredText</span><span class="err">和</span><span class="n">Markdown</span><span class="err">写文章，配置灵</span>
+
+                                                                    <span class="err">活，扩展性强。目前</span><span class="n">Pelican</span><span class="err">已发布</span><span class="mf">3.5.0</span><span class="err">版本，有许多优秀的主题和插件可供使用</span><span class="p">(</span><span class="err">对于增强</span><span class="n">blog</span><span class="err">效果很好使</span><span class="p">)</span><span class="err">。先安</span>
+
+                                                                    <span class="mf">3.</span><span class="err">在</span><span class="n">blog</span><span class="err">目录下用命令</span><span class="n">make</span> <span class="n">html</span><span class="err">或者启动脚本</span><span class="p">.</span><span class="o">/</span><span class="n">develop_server</span><span class="p">.</span><span class="n">sh</span> <span class="n">start</span><span class="err">生成</span><span class="n">html</span><span class="err">文件，生成的</span><span class="n">html</span><span class="err">文件全部在</span><span class="n">output</span><span class="err">目录下，大概有</span>
+                                                                    <span class="err">以下文件：</span>
+
+                                                                    <span class="o">&gt;</span> <span class="n">archives</span><span class="p">.</span><span class="n">html</span>  <span class="n">build</span>            <span class="n">category</span>    <span class="n">my</span><span class="o">-</span><span class="n">childhood</span><span class="p">.</span><span class="n">html</span>  <span class="n">README</span><span class="p">.</span><span class="n">md</span>    <span class="n">tags</span><span class="p">.</span><span class="n">html</span>
+
+                                                                        <span class="o">&gt;</span> <span class="n">author</span>         <span class="n">cache</span>            <span class="n">feeds</span>       <span class="n">output</span>             <span class="n">sitemap</span><span class="p">.</span><span class="n">xml</span>  <span class="n">theme</span>
+
+                                                                        <span class="o">&gt;</span> <span class="n">authors</span><span class="p">.</span><span class="n">html</span>   <span class="n">categories</span><span class="p">.</span><span class="n">html</span>  <span class="n">index</span><span class="p">.</span><span class="n">html</span>  <span class="n">pelican</span><span class="p">.</span><span class="n">pid</span>        <span class="n">srv</span><span class="p">.</span><span class="n">pid</span>
+
+                                                                        <span class="err">本地浏览器访问一下，</span><span class="nl">http</span><span class="p">:</span><span class="c1">//localhost:8000，应该可以看到blog的内容，只不过默认pelican使用的是simple主题，效果不是很好，</span>
+
+                                                                        <span class="mf">4.</span><span class="err">修改默认的</span><span class="n">themes</span>
+
+                                                                        <span class="err">去</span><span class="n">github</span><span class="err">将</span><span class="n">pelican</span><span class="err">的</span><span class="n">themes</span><span class="err">拿下来，点击</span><span class="p">[</span><span class="n">pelican</span> <span class="n">themes</span><span class="p">](</span><span class="nl">http</span><span class="p">:</span><span class="c1">//www.pelicanthemes.com/)可以看到各种themes的效果[pelican repo](https://github.com/getpelican/pelican-themes)，将其clone下来，发现国内访问github普遍比较慢，电信的好点，联通的不行。然后修改blog目录下的pelicanconf.py配置文件，增加THEME = &quot;theme&#39;s path&quot; //这里特别推荐new-bootstrap2这个theme，效果很好，而且支持disqus重新make html或者./develop_server.sh restart，再次本地浏览一下，发现这个theme的效果好多了吧，pelican的本地blog算是弄好了，现在要做的是将其上传到github上面，下面将详细介绍这部分内容</span>
+</pre></div>
+
+
+<h3>申请GitHub账号</h3>
+<p>这里有三个概念应该要了解一下：</p>
+<ul>
+<li>git</li>
+<li>github</li>
+<li>github pages</li>
+</ul>
+<p>当然不懂也可以，像博主这样的菜鸟就是完全不懂这三个概念，丝毫不影响在github上面的操作，只不过如果了解一点的话，印象会比较深刻。
+去到<a href="https://github.com/">github官网</a>申请一个账号，so easy，都是菜鸟最喜欢的下一步下一步，github为每个账号免费提供了300M的存储空间，申请好账号之后新建一个repository，注意repository的名字必须为<strong>账号.github.io</strong>或者<strong>账号.github.com</strong>，这是为了可以访问到你的blog，所以注册时账号id肯定要unique的，至于为什么仓库名字必须是那两种形式呢，这应该是github考虑到了域名的问题，就干脆那样子规定了，一定unique的账号再加上后面.github.io的二级域，就可以找到你的blog了；其实这里还有一个问题：github的两种pages模式</p>
+<div class="highlight"><pre>1.User/Organization Pages 个人或公司站点
+ 使用自己的用户名，每个用户名下面只能建立一个；
+ 资源命名必须符合这样的规则username/username.github.io；
+ 主干上内容被用来构建和发布页面
+
+2.Project Pages 项目站点
+ gh-pages分支用于构建和发布；
+ 如果user/org pages使用了独立域名，那么托管在账户下的所有project pages将使用相同的域名进行重定向，除非project pages使用了自己的独立域名；
+ 如果没有使用独立域名，project pages将通过子路径的形式提供服务username.github.com/projectname；
+ 自定义404页面只能在独立域名下使用，否则会使用User Pages 404；
+</pre></div>
+
+
+<p>注：其实这个问题就是博主一开始说要了解一下那三个概念的原因，github pages两种模式，很明显博主用的是第一种，<strong>所以仓库名字一定要注意</strong></p>
+<div class="highlight"><pre>                                    <span class="err">刚新建好的</span><span class="n">repo</span><span class="err">是空的，</span><span class="n">github</span><span class="err">那里会有例子教你新建仓库或者将一个已存在的仓库</span><span class="n">push</span><span class="err">到</span><span class="n">github</span><span class="err">上面，此时可以在</span><span class="n">pelican</span><span class="err">的</span><span class="n">output</span><span class="err">目录下</span>
+                                    <span class="err">新建仓库了，主要就是以下五步曲</span><span class="p">(</span><span class="err">四步</span><span class="p">)</span><span class="err">：</span>
+
+                                    <span class="o">+</span> <span class="n">git</span> <span class="n">init</span>  <span class="err">#初始化一个</span><span class="n">git</span><span class="err">仓库，会生成</span><span class="p">.</span><span class="n">git</span><span class="err">目录，里面有</span><span class="n">git</span><span class="err">仓库所需要的各种文件，不用理它</span>
+                                    <span class="o">+</span> <span class="n">git</span> <span class="n">add</span> <span class="p">.</span>  <span class="err">#将当前目录的所有文件</span><span class="n">add</span><span class="err">到</span><span class="n">git</span><span class="err">仓库里，出于</span><span class="n">staged</span><span class="err">状态</span>
+                                    <span class="o">+</span> <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s">&quot;banner&quot;</span>  <span class="err">#提交</span><span class="n">staged</span><span class="err">状态的文件</span>
+                                    <span class="o">+</span> <span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="n">git</span><span class="p">@</span><span class="n">github</span><span class="p">.</span><span class="nl">com</span><span class="p">:</span><span class="n">git</span><span class="o">-</span><span class="n">rain</span><span class="o">/</span><span class="n">git</span><span class="o">-</span><span class="n">rain</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">git</span>  <span class="err">#在远程</span><span class="n">git</span><span class="o">-</span><span class="n">rain</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">io</span><span class="err">仓库创建一个名字叫做</span><span class="n">origin</span><span class="err">，这一步只需要一次</span>
+                                    <span class="o">+</span> <span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">master</span>   <span class="err">#推博客</span><span class="n">html</span><span class="err">文件到</span><span class="n">origin</span><span class="err">仓库</span><span class="p">(</span><span class="err">即</span><span class="n">git</span><span class="o">-</span><span class="n">rain</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">io</span><span class="err">仓库</span><span class="p">)</span><span class="err">的</span><span class="n">master</span><span class="err">分支上</span>
+
+                                    <span class="o">&gt;</span> <span class="err">注：最后推的时候，博主用的</span><span class="n">url</span><span class="err">是</span><span class="n">git</span><span class="p">@</span><span class="n">github</span><span class="p">.</span><span class="nl">com</span><span class="p">:</span><span class="n">git</span><span class="o">-</span><span class="n">rain</span><span class="o">/</span><span class="n">git</span><span class="o">-</span><span class="n">rain</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">git</span><span class="err">即</span><span class="n">ssh</span><span class="err">形式，其实新建仓库的时候，</span><span class="n">github</span>
+
+                                    <span class="o">&gt;</span> <span class="err">那里就会显示有两个</span><span class="n">url</span><span class="err">可以访问你的</span><span class="n">github</span> <span class="n">pages</span><span class="err">，一个是</span><span class="nl">https</span><span class="p">:</span><span class="c1">//github.com/id/repo.git的形式，另外一个是</span>
+
+                                    <span class="o">&gt;</span> <span class="n">git</span><span class="p">@</span><span class="n">github</span><span class="p">.</span><span class="nl">com</span><span class="p">:</span><span class="kt">id</span><span class="o">/</span><span class="n">repo</span><span class="p">.</span><span class="n">git</span><span class="err">，第一种方法基于</span><span class="n">https</span><span class="err">，第二种方法基于</span><span class="n">ssh</span><span class="err">，都是加密的安全传输；不过第一种方法要手动输入</span><span class="n">github</span><span class="err">账</span>
+
+                                    <span class="o">&gt;</span> <span class="err">号的用户名密码，每次都要输入很麻烦而且在脚本中不好实现自动</span><span class="n">pull</span><span class="err">代码，第二种方法只要将本地</span><span class="n">ssl</span><span class="err">公钥上传到</span><span class="n">github</span><span class="err">上面既可实现不用</span>
+
+                                    <span class="o">&gt;</span><span class="err">输入用户名密码直接</span><span class="n">pull</span><span class="err">代码，很明显博主这里用的是第二种方法，如下：</span>
+
+                                         <span class="err">本地生成</span><span class="n">ssl</span><span class="err">公私密钥对，</span><span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span> <span class="o">-</span><span class="n">t</span> <span class="n">rsa</span> <span class="o">-</span><span class="n">f</span> <span class="o">~/</span><span class="p">.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_rsa</span> <span class="o">-</span><span class="n">C</span> <span class="mi">123</span><span class="mf">@56.</span><span class="n">com</span> <span class="err">#注：这里最好用默认的存放密钥的路径，否则</span><span class="n">git</span> <span class="n">push</span><span class="err">可能会找不到私钥</span>
+                                             <span class="err">将公钥内容上传到</span><span class="n">github</span><span class="err">，点击</span><span class="n">Edit</span> <span class="n">profile</span><span class="err">那里的</span><span class="n">SSH</span> <span class="n">keys</span><span class="err">按钮，粘贴进去，注意要将</span><span class="n">id_rsa</span><span class="p">.</span><span class="n">pub</span><span class="err">的全部内容粘贴</span>
+                                                 <span class="err">然后</span><span class="n">ssh</span> <span class="o">-</span><span class="n">T</span> <span class="n">git</span><span class="p">@</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="err">，如果看到</span><span class="n">Hi</span> <span class="n">git</span><span class="o">-</span><span class="n">rain</span><span class="o">!</span> <span class="n">You</span><span class="err">&#39;</span><span class="n">ve</span> <span class="n">successfully</span> <span class="n">authenticated</span><span class="p">,</span> <span class="n">but</span> <span class="n">GitHub</span> <span class="n">does</span> <span class="n">not</span> <span class="n">provide</span> <span class="n">shell</span> <span class="n">access</span><span class="p">.</span><span class="err">类似的提示，则验证成功</span>
+
+                                                 <span class="err">将博客</span><span class="n">html</span><span class="err">文件</span><span class="n">push</span><span class="err">上去之后，可以用</span><span class="n">git</span><span class="o">-</span><span class="n">rain</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">io</span><span class="err">去访问一下，发现已经可以访问了，网上很多人说</span><span class="n">push</span><span class="err">完成之后要等十分钟左右，博主比较幸运，上传完成立即就可以访问了，终于在</span><span class="n">github</span><span class="err">上面看到自己亲手搭建起来的</span><span class="n">blog</span><span class="err">了，有点小兴奋，保持状态，</span><span class="o">**</span><span class="n">go</span> <span class="n">on</span><span class="err">！</span><span class="o">**</span>
+</pre></div>
+
+
+<h3>pelican结合disqus</h3>
+<p>此时很遗憾地发现blog竟没有评论系统，pelican本身没有此功能，不过支持disqus这个大众的三方评论系统，默认很多themes都是启用了该支持的，不过神坑的就是博主一开始不知道pelican3.5.0默认的themes是不支持disqus的，后来在<a href="http://querbalken.net/howto-setup-comments-with-disqus-in-pelican-en.html">这篇blog</a>得到了帮助，很明显这也是一篇和博主一样类型的blog。PS：网上很多中文的教程没有说到这一点，他们使用的themes都是支持disqus的，所以直接忽略了这点，对于我们小白来说，也是致命的伤害啊，所以博主建议以后多用google(fq自己解决，多看英文资料)</p>
+<p>后来楼主使用的themes是new-bootstrap2，效果挺不错的，也支持disqus,现在要做的就是去disqus上面申请一个站绑定你blog的域名可以去<a href="https://disqus.com/">disqus 官网</a>注册一个账号，并且add your site to disqus，上面要填的主要是blog的域名和disqus的shortname，注意shortname必须unique，而且一旦add成功了要记下来然后回到pelican，配置一下pelicanconf.py文件，增加一条：DISQUS_STIENAME = "shortname"</p>
+<p>其实pelicanconf.py还可以配置很多东西，详细可以参考<a href="http://docs.getpelican.com/en/3.2/settings.html">pelican配置</a>，由于这里是菜鸟脱白，就不说了，其实重点是博主我也不懂！</p>
+<p>配置完成后，按照老套路，make html，其实本地查看已经发现有评论系统了，四部曲将代码push到github，然后刷新一下浏览器，见证奇迹的时刻到了，可以正常评论blog了，一个基本的blog就这样完成了，很感谢网上各位大神的帮助，帮助小白搭建blog，也希望大家能够按照此教程完成自己blog的搭建，赶快join github把，要不然就真的很out了，当然现在也已经out了。</p>
+        </div><!-- /.entry-content -->
+        <div class="comments">
+        <h2>Comments !</h2>
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+               var disqus_identifier = "my-post.html";
+               (function() {
+                    var dsq = document.createElement('script');
+                    dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://git-rain.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] ||
+                     document.getElementsByTagName('body')[0]).appendChild(dsq);
+              })();
+            </script>
+        </div>
+    </article>
+</section>
+</div>
+</div>
+        </div><!--/span-->
+        <div class="span3 well sidebar-nav" id="sidebar">
+<ul class="nav nav-list">
+<li class="nav-header"><h4><i class="icon-external-link"></i>blogroll</h4></li>
+    <li><div><i class="icon-external-link"></i><a href="http://getpelican.com/">Pelican</a></div></li>
+    <li><div><i class="icon-external-link"></i><a href="http://python.org/">Python.org</a></div></li>
+    <li><div><i class="icon-external-link"></i><a href="http://baidu.com/">Baidu</a></div></li>
+    <li><div><i class="icon-external-link"></i><a href="#">You can modify those links in your config file</a></div></li>
+<li class="nav-header"><h4><i class="icon-home icon-large"></i> social</h4></li>
+<li><a href="/" rel="alternate"><i class="icon-bookmark icon-large"></i>atom feed</a></li>
+<li><a href="/feeds/all.rss.xml" rel="alternate"><i class="icon-bookmark icon-large"></i>rss feed</a></li>
+    <li><a href="#"><i class="icon-You can add links in your config file-sign icon-large"></i>You can add links in your config file</a></li>
+    <li><a href="#"><i class="icon-Another social link-sign icon-large"></i>Another social link</a></li>
+
+<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+<li>
+<a href="/category/python.html">
+    <i class="icon-folder-open icon-large"></i>Python
+</a>
+</li>
+
+<li class="nav-header"><a href="/tags.html"><h4><i class="icon-tags icon-large"></i>Tags</h4></a></li>
+    <li class="tag-4">
+        <a href="/tag/python.html">
+            <i class="icon-tag icon-large"></i>Python
+        </a>
+    </li>
+    <li class="tag-4">
+        <a href="/tag/git.html">
+            <i class="icon-tag icon-large"></i>Git
+        </a>
+    </li>
+    <li class="tag-4">
+        <a href="/tag/pelican.html">
+            <i class="icon-tag icon-large"></i>Pelican
+        </a>
+    </li>
+    <li class="tag-4">
+        <a href="/tag/github.html">
+            <i class="icon-tag icon-large"></i>GitHub
+        </a>
+    </li>
+    <li class="tag-4">
+        <a href="/tag/blog.html">
+            <i class="icon-tag icon-large"></i>Blog
+        </a>
+    </li>
+
+
+</ul>        </div><!--/.well -->
+
+      </div><!--/row-->
+
+      <hr>
+
+    </div><!--/.fluid-container-->
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-59221660-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+    <!-- Le javascript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/theme/js/jquery-1.7.2.min.js"></script>
+    <script src="/theme/js/bootstrap.min.js"></script>
+  </body>
+</html>
