@@ -1,72 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>rain's blog</title><link>/</link><description></description><atom:link href="/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Tue, 03 Feb 2015 10:20:00 +0800</lastBuildDate><item><title>rains blog</title><link>/my-post.html</link><description>&lt;h2&gt;菜鸟零基础使用pelican成功在github上搭建博客(这个版本绝对靠谱，修复了网上很多教程的错误，而且也很详尽)&lt;/h2&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>rain's blog</title><link>/</link><description></description><atom:link href="/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Tue, 03 Feb 2015 10:20:00 +0800</lastBuildDate><item><title>rain's blog</title><link>/my-post.html</link><description>&lt;h1&gt;菜鸟零基础使用pelican成功在github上搭建博客&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;ps:这个版本绝对靠谱，修复了网上很多教程的错误，而且也很详尽&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;由于工作的原因，接触了pelican，发现它很方便，于是菜鸟就有了以下的折腾：&lt;/p&gt;
-&lt;h3&gt;Pelican&lt;/h3&gt;
+&lt;h2&gt;Pelican&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Pelican是一个用Python语言编写的静态网站生成器，&lt;/strong&gt;支持使用restructuredText和Markdown写文章，配置灵活，扩展性强。目前Pelican已发布3.5.0版本，有许多优秀的主题和插件可供使用(对于增强blog效果很好使)。先安装好pelican和git，这两个软件的安装很简单，git直接用apt-get安装，pelican是用python开发的，直接用pip安装就行.&lt;/p&gt;
-&lt;p&gt;+ apt-get install git
-+ pip install pelican #如果还有菜鸟像我一样不知道pip是什么的，应该去了解一下，这里就不累述了，毕竟不是这里讨论的重点&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;注：直接pip安装的pelican版本是3.5.0，默认的theme是simple，不支持disqus三方评论系统，这个小插曲害惨我了，后面再说
-&lt;/pre&gt;&lt;/div&gt;
-
-
+&lt;ul&gt;
+&lt;li&gt;apt-get install git&lt;/li&gt;
+&lt;li&gt;pip install pelican  #如果还有菜鸟像我一样不知道pip是什么的，应该去了解一下，这里就不累述了，毕竟不是这里讨论的重点&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;注：直接pip安装的pelican版本是3.5.0，默认的theme是simple，不支持disqus三方评论系统，这个小插曲害惨我了，后面再说&lt;/p&gt;
 &lt;h3&gt;利用pelican快速构建本地blog&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="mf"&gt;1.&lt;/span&gt;&lt;span class="err"&gt;选择一个&lt;/span&gt;&lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="err"&gt;目录，用命令&lt;/span&gt;&lt;span class="n"&gt;pelican&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;quickstart&lt;/span&gt;&lt;span class="err"&gt;初始化一个网站结构出来&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;按照提示一步步走&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;，运行命令之后，应该会有以下有效文件：&lt;/span&gt;
-
-    &lt;span class="err"&gt;    &lt;/span&gt;&lt;span class="n"&gt;cache&lt;/span&gt;&lt;span class="err"&gt;    &lt;/span&gt;&lt;span class="n"&gt;develop_server&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sh&lt;/span&gt;&lt;span class="err"&gt;  &lt;/span&gt;&lt;span class="n"&gt;Makefile&lt;/span&gt;&lt;span class="err"&gt;  &lt;/span&gt;&lt;span class="n"&gt;pelicanconf&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;&lt;span class="err"&gt;   &lt;/span&gt;&lt;span class="n"&gt;pelican&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pid&lt;/span&gt;&lt;span class="err"&gt;      &lt;/span&gt;&lt;span class="n"&gt;publishconf&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
-    &lt;span class="err"&gt;    &lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="err"&gt;  &lt;/span&gt;&lt;span class="n"&gt;fabfile&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;&lt;span class="err"&gt;         &lt;/span&gt;&lt;span class="n"&gt;output&lt;/span&gt;&lt;span class="err"&gt;    &lt;/span&gt;&lt;span class="n"&gt;pelicanconf&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pyc&lt;/span&gt;&lt;span class="err"&gt;  &lt;/span&gt;&lt;span class="n"&gt;pelican&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;plugins&lt;/span&gt;&lt;span class="err"&gt;  &lt;/span&gt;&lt;span class="n"&gt;srv&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pid&lt;/span&gt;
-
-    &lt;span class="err"&gt;这些文件盒目录大概都是什么作用的呢，以下简单说明一下&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
-
-    &lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt; &lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="err"&gt;这里是放置你的博文的，例如我的&lt;/span&gt;&lt;span class="n"&gt;rain&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;md&lt;/span&gt;&lt;span class="err"&gt;文章；&lt;/span&gt;
-
-    &lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt; &lt;/span&gt;&lt;span class="n"&gt;pages&lt;/span&gt;&lt;span class="err"&gt;是让用户可以自己定制些页面，比如&lt;/span&gt;&lt;span class="n"&gt;aboutme&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;md&lt;/span&gt;&lt;span class="err"&gt;等等页面；&lt;/span&gt;
-
-    &lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt; &lt;/span&gt;&lt;span class="n"&gt;output&lt;/span&gt;&lt;span class="err"&gt;这个目录下放置的就是一会利用&lt;/span&gt;&lt;span class="n"&gt;pelican&lt;/span&gt;&lt;span class="err"&gt;生成的静态博客内容，当然是&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;&lt;span class="err"&gt;的；&lt;/span&gt;
-
-    &lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt; &lt;/span&gt;&lt;span class="n"&gt;pelicanconf&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;&lt;span class="err"&gt;，是博客的配置文件，后面慢慢讲；&lt;/span&gt;
-
-    &lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt; &lt;/span&gt;&lt;span class="n"&gt;Makefile&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="n"&gt;make&lt;/span&gt;&lt;span class="err"&gt;命令的配置文件，如果你懂&lt;/span&gt;&lt;span class="n"&gt;linux&lt;/span&gt;&lt;span class="err"&gt;的源码编译安装软件，这个就很熟了，不过不懂也没事，楼主也不懂，&lt;/span&gt;&lt;span class="n"&gt;pelican&lt;/span&gt;&lt;span class="err"&gt;就是可以让像我这样的菜鸟也可以自己搭建&lt;/span&gt;&lt;span class="n"&gt;blog&lt;/span&gt;
-
-    &lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt; &lt;/span&gt;&lt;span class="n"&gt;develop_server&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sh&lt;/span&gt; &lt;span class="err"&gt;本地服务的脚本&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="err"&gt;后面可以接参数&lt;/span&gt;&lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;stop&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;restart&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Port&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="err"&gt;默认是&lt;/span&gt;&lt;span class="mi"&gt;8000&lt;/span&gt;&lt;span class="err"&gt;号端口&lt;/span&gt;
-
-    &lt;span class="mf"&gt;2.&lt;/span&gt;&lt;span class="err"&gt;在&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="err"&gt;目录下新建博文&lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;rain&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;md&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-
-            &lt;span class="nl"&gt;Title&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;rain&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="n"&gt;blog&lt;/span&gt;
-
-                    &lt;span class="nl"&gt;Date&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2015&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mo"&gt;02&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mo"&gt;03&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;
-
-                            &lt;span class="nl"&gt;Category&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Python&lt;/span&gt;
-
-                                    &lt;span class="nl"&gt;Tags&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Pelican&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Python&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;GitHub&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Git&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Blog&lt;/span&gt;
-
-                                            &lt;span class="nl"&gt;Slug&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;my&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;post&lt;/span&gt;
-
-                                                    &lt;span class="nl"&gt;Author&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;rain&lt;/span&gt;
-
-                                                            &lt;span class="nl"&gt;Summary&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;blog&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;pelican&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt; &lt;span class="n"&gt;GitHub&lt;/span&gt;
-
-                                                                &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;Pelican&lt;/span&gt;&lt;span class="err"&gt;是一个用&lt;/span&gt;&lt;span class="n"&gt;Python&lt;/span&gt;&lt;span class="err"&gt;语言编写的静态网站生成器，&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="err"&gt;支持使用&lt;/span&gt;&lt;span class="n"&gt;restructuredText&lt;/span&gt;&lt;span class="err"&gt;和&lt;/span&gt;&lt;span class="n"&gt;Markdown&lt;/span&gt;&lt;span class="err"&gt;写文章，配置灵&lt;/span&gt;
-
-                                                                    &lt;span class="err"&gt;活，扩展性强。目前&lt;/span&gt;&lt;span class="n"&gt;Pelican&lt;/span&gt;&lt;span class="err"&gt;已发布&lt;/span&gt;&lt;span class="mf"&gt;3.5.0&lt;/span&gt;&lt;span class="err"&gt;版本，有许多优秀的主题和插件可供使用&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;对于增强&lt;/span&gt;&lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="err"&gt;效果很好使&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;。先安&lt;/span&gt;
-
-                                                                    &lt;span class="mf"&gt;3.&lt;/span&gt;&lt;span class="err"&gt;在&lt;/span&gt;&lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="err"&gt;目录下用命令&lt;/span&gt;&lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;html&lt;/span&gt;&lt;span class="err"&gt;或者启动脚本&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;develop_server&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sh&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="err"&gt;生成&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;&lt;span class="err"&gt;文件，生成的&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;&lt;span class="err"&gt;文件全部在&lt;/span&gt;&lt;span class="n"&gt;output&lt;/span&gt;&lt;span class="err"&gt;目录下，大概有&lt;/span&gt;
-                                                                    &lt;span class="err"&gt;以下文件：&lt;/span&gt;
-
-                                                                    &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;archives&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;  &lt;span class="n"&gt;build&lt;/span&gt;            &lt;span class="n"&gt;category&lt;/span&gt;    &lt;span class="n"&gt;my&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;childhood&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;  &lt;span class="n"&gt;README&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;md&lt;/span&gt;    &lt;span class="n"&gt;tags&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;
-
-                                                                        &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;author&lt;/span&gt;         &lt;span class="n"&gt;cache&lt;/span&gt;            &lt;span class="n"&gt;feeds&lt;/span&gt;       &lt;span class="n"&gt;output&lt;/span&gt;             &lt;span class="n"&gt;sitemap&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;xml&lt;/span&gt;  &lt;span class="n"&gt;theme&lt;/span&gt;
-
-                                                                        &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;authors&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;   &lt;span class="n"&gt;categories&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;  &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;  &lt;span class="n"&gt;pelican&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pid&lt;/span&gt;        &lt;span class="n"&gt;srv&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pid&lt;/span&gt;
-
-                                                                        &lt;span class="err"&gt;本地浏览器访问一下，&lt;/span&gt;&lt;span class="nl"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//localhost:8000，应该可以看到blog的内容，只不过默认pelican使用的是simple主题，效果不是很好，&lt;/span&gt;
-
-                                                                        &lt;span class="mf"&gt;4.&lt;/span&gt;&lt;span class="err"&gt;修改默认的&lt;/span&gt;&lt;span class="n"&gt;themes&lt;/span&gt;
-
-                                                                        &lt;span class="err"&gt;去&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="err"&gt;将&lt;/span&gt;&lt;span class="n"&gt;pelican&lt;/span&gt;&lt;span class="err"&gt;的&lt;/span&gt;&lt;span class="n"&gt;themes&lt;/span&gt;&lt;span class="err"&gt;拿下来，点击&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;pelican&lt;/span&gt; &lt;span class="n"&gt;themes&lt;/span&gt;&lt;span class="p"&gt;](&lt;/span&gt;&lt;span class="nl"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//www.pelicanthemes.com/)可以看到各种themes的效果[pelican repo](https://github.com/getpelican/pelican-themes)，将其clone下来，发现国内访问github普遍比较慢，电信的好点，联通的不行。然后修改blog目录下的pelicanconf.py配置文件，增加THEME = &amp;quot;theme&amp;#39;s path&amp;quot; //这里特别推荐new-bootstrap2这个theme，效果很好，而且支持disqus重新make html或者./develop_server.sh restart，再次本地浏览一下，发现这个theme的效果好多了吧，pelican的本地blog算是弄好了，现在要做的是将其上传到github上面，下面将详细介绍这部分内容&lt;/span&gt;
+&lt;p&gt;&lt;strong&gt;1.选择博客目录&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;选择一个blog目录，用命令pelican-quickstart初始化一个网站结构出来(按照提示一步步走)，运行命令之后，应该会有以下有效文件：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;cache   develop_server.sh   Makefile    pelicanconf.py
+pelican.pid publishconf.py content  fabfile.py  output  
+pelicanconf.pyc pelican-plugins     srv.pid
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h3&gt;申请GitHub账号&lt;/h3&gt;
+&lt;p&gt;这些文件盒目录大概都是什么作用的呢，以下简单说明一下:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;     content这里是放置你的博文的，例如我的rain.md文章；
+
+     pages是让用户可以自己定制些页面，比如aboutme.md等等页面；
+
+     output这个目录下放置的就是一会利用pelican生成的静态博客内容，当然是html的；
+
+     pelicanconf.py，是博客的配置文件，后面慢慢讲；
+
+     Makefile，make命令的配置文件，如果你懂linux的源码编译安装软件，这个就很熟了，不过不懂也没事，楼主也不懂，pelican就是可以让像我这样的菜鸟也可以自己搭建blog
+
+     develop_server.sh 本地服务的脚本,后面可以接参数start|stop|restart [Port]默认是8000号端口
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;2.新建博文&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在content目录下新建博文--rain.md：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Title: rains blog&lt;/p&gt;
+&lt;p&gt;Date: 2015-02-03 10:20&lt;/p&gt;
+&lt;p&gt;Category: Python&lt;/p&gt;
+&lt;p&gt;Tags: Pelican, Python, GitHub, Git, Blog&lt;/p&gt;
+&lt;p&gt;Slug: my-post&lt;/p&gt;
+&lt;p&gt;Author: rain&lt;/p&gt;
+&lt;p&gt;Summary: a blog for pelican on GitHub&lt;/p&gt;
+&lt;p&gt;**Pelican是一个用Python语言编写的静态网站生成器，**支持使用restructuredText和Markdown写文章，配置灵活，扩展性强。目前Pelican已发布3.5.0版本，有许多优秀的主题和插件可供使用(对于增强blog效果很好使)。先安...&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;3.生成博客html文件&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在blog目录下用命令make html或者启动脚本./develop_server.sh start生成html文件，生成的html文件全部在output目录下，大概有以下文件：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;archives.html  build category my-childhood.html  README.md 
+tags.html author cache feeds output sitemap.xml  theme
+authors.html categories.html index.html pelican.pid srv.pid
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;本地浏览器访问一下，http://localhost:8000，应该可以看到blog的内容，只不过默认pelican使用的是simple主题，效果不是很好&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;4.修改默认的themes&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;去github将pelican的themes拿下来，点击&lt;a href="http://www.pelicanthemes.com/"&gt;pelican themes&lt;/a&gt;可以看到各种themes的效果&lt;a href="https://github.com/getpelican/pelican-themes"&gt;pelican repo&lt;/a&gt;，将其clone下来，发现国内访问github普遍比较慢，电信的好点，联通的不行。然后修改blog目录下的pelicanconf.py配置文件，增加THEME = "theme's path" //这里特别推荐new-bootstrap2这个theme，效果很好，而且支持disqus重新make html或者./develop_server.sh restart，再次本地浏览一下，发现这个theme的效果好多了吧，pelican的本地blog算是弄好了，现在要做的是将其上传到github上面，下面将详细介绍这部分内容&lt;/p&gt;
+&lt;h2&gt;申请GitHub账号&lt;/h2&gt;
 &lt;p&gt;这里有三个概念应该要了解一下：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;git&lt;/li&gt;
@@ -89,35 +79,29 @@
 
 
 &lt;p&gt;注：其实这个问题就是博主一开始说要了解一下那三个概念的原因，github pages两种模式，很明显博主用的是第一种，&lt;strong&gt;所以仓库名字一定要注意&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;                                    &lt;span class="err"&gt;刚新建好的&lt;/span&gt;&lt;span class="n"&gt;repo&lt;/span&gt;&lt;span class="err"&gt;是空的，&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="err"&gt;那里会有例子教你新建仓库或者将一个已存在的仓库&lt;/span&gt;&lt;span class="n"&gt;push&lt;/span&gt;&lt;span class="err"&gt;到&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="err"&gt;上面，此时可以在&lt;/span&gt;&lt;span class="n"&gt;pelican&lt;/span&gt;&lt;span class="err"&gt;的&lt;/span&gt;&lt;span class="n"&gt;output&lt;/span&gt;&lt;span class="err"&gt;目录下&lt;/span&gt;
-                                    &lt;span class="err"&gt;新建仓库了，主要就是以下五步曲&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;四步&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;：&lt;/span&gt;
-
-                                    &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;init&lt;/span&gt;  &lt;span class="err"&gt;#初始化一个&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="err"&gt;仓库，会生成&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="err"&gt;目录，里面有&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="err"&gt;仓库所需要的各种文件，不用理它&lt;/span&gt;
-                                    &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;  &lt;span class="err"&gt;#将当前目录的所有文件&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="err"&gt;到&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="err"&gt;仓库里，出于&lt;/span&gt;&lt;span class="n"&gt;staged&lt;/span&gt;&lt;span class="err"&gt;状态&lt;/span&gt;
-                                    &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;commit&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;banner&amp;quot;&lt;/span&gt;  &lt;span class="err"&gt;#提交&lt;/span&gt;&lt;span class="n"&gt;staged&lt;/span&gt;&lt;span class="err"&gt;状态的文件&lt;/span&gt;
-                                    &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;remote&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt; &lt;span class="n"&gt;origin&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;com&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;rain&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;rain&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;  &lt;span class="err"&gt;#在远程&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;rain&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="err"&gt;仓库创建一个名字叫做&lt;/span&gt;&lt;span class="n"&gt;origin&lt;/span&gt;&lt;span class="err"&gt;，这一步只需要一次&lt;/span&gt;
-                                    &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;push&lt;/span&gt; &lt;span class="n"&gt;origin&lt;/span&gt; &lt;span class="n"&gt;master&lt;/span&gt;   &lt;span class="err"&gt;#推博客&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;&lt;span class="err"&gt;文件到&lt;/span&gt;&lt;span class="n"&gt;origin&lt;/span&gt;&lt;span class="err"&gt;仓库&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;即&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;rain&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="err"&gt;仓库&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;的&lt;/span&gt;&lt;span class="n"&gt;master&lt;/span&gt;&lt;span class="err"&gt;分支上&lt;/span&gt;
-
-                                    &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="err"&gt;注：最后推的时候，博主用的&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="err"&gt;是&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;com&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;rain&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;rain&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="err"&gt;即&lt;/span&gt;&lt;span class="n"&gt;ssh&lt;/span&gt;&lt;span class="err"&gt;形式，其实新建仓库的时候，&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;
-
-                                    &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="err"&gt;那里就会显示有两个&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="err"&gt;可以访问你的&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt; &lt;span class="n"&gt;pages&lt;/span&gt;&lt;span class="err"&gt;，一个是&lt;/span&gt;&lt;span class="nl"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//github.com/id/repo.git的形式，另外一个是&lt;/span&gt;
-
-                                    &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;com&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="kt"&gt;id&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;repo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="err"&gt;，第一种方法基于&lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="err"&gt;，第二种方法基于&lt;/span&gt;&lt;span class="n"&gt;ssh&lt;/span&gt;&lt;span class="err"&gt;，都是加密的安全传输；不过第一种方法要手动输入&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="err"&gt;账&lt;/span&gt;
-
-                                    &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="err"&gt;号的用户名密码，每次都要输入很麻烦而且在脚本中不好实现自动&lt;/span&gt;&lt;span class="n"&gt;pull&lt;/span&gt;&lt;span class="err"&gt;代码，第二种方法只要将本地&lt;/span&gt;&lt;span class="n"&gt;ssl&lt;/span&gt;&lt;span class="err"&gt;公钥上传到&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="err"&gt;上面既可实现不用&lt;/span&gt;
-
-                                    &lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;输入用户名密码直接&lt;/span&gt;&lt;span class="n"&gt;pull&lt;/span&gt;&lt;span class="err"&gt;代码，很明显博主这里用的是第二种方法，如下：&lt;/span&gt;
-
-                                         &lt;span class="err"&gt;本地生成&lt;/span&gt;&lt;span class="n"&gt;ssl&lt;/span&gt;&lt;span class="err"&gt;公私密钥对，&lt;/span&gt;&lt;span class="n"&gt;ssh&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;keygen&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="n"&gt;rsa&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ssh&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;id_rsa&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt; &lt;span class="mi"&gt;123&lt;/span&gt;&lt;span class="mf"&gt;@56.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt; &lt;span class="err"&gt;#注：这里最好用默认的存放密钥的路径，否则&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;push&lt;/span&gt;&lt;span class="err"&gt;可能会找不到私钥&lt;/span&gt;
-                                             &lt;span class="err"&gt;将公钥内容上传到&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="err"&gt;，点击&lt;/span&gt;&lt;span class="n"&gt;Edit&lt;/span&gt; &lt;span class="n"&gt;profile&lt;/span&gt;&lt;span class="err"&gt;那里的&lt;/span&gt;&lt;span class="n"&gt;SSH&lt;/span&gt; &lt;span class="n"&gt;keys&lt;/span&gt;&lt;span class="err"&gt;按钮，粘贴进去，注意要将&lt;/span&gt;&lt;span class="n"&gt;id_rsa&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pub&lt;/span&gt;&lt;span class="err"&gt;的全部内容粘贴&lt;/span&gt;
-                                                 &lt;span class="err"&gt;然后&lt;/span&gt;&lt;span class="n"&gt;ssh&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="err"&gt;，如果看到&lt;/span&gt;&lt;span class="n"&gt;Hi&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;rain&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;You&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;ve&lt;/span&gt; &lt;span class="n"&gt;successfully&lt;/span&gt; &lt;span class="n"&gt;authenticated&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;but&lt;/span&gt; &lt;span class="n"&gt;GitHub&lt;/span&gt; &lt;span class="n"&gt;does&lt;/span&gt; &lt;span class="n"&gt;not&lt;/span&gt; &lt;span class="n"&gt;provide&lt;/span&gt; &lt;span class="n"&gt;shell&lt;/span&gt; &lt;span class="n"&gt;access&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="err"&gt;类似的提示，则验证成功&lt;/span&gt;
-
-                                                 &lt;span class="err"&gt;将博客&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;&lt;span class="err"&gt;文件&lt;/span&gt;&lt;span class="n"&gt;push&lt;/span&gt;&lt;span class="err"&gt;上去之后，可以用&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;rain&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="err"&gt;去访问一下，发现已经可以访问了，网上很多人说&lt;/span&gt;&lt;span class="n"&gt;push&lt;/span&gt;&lt;span class="err"&gt;完成之后要等十分钟左右，博主比较幸运，上传完成立即就可以访问了，终于在&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="err"&gt;上面看到自己亲手搭建起来的&lt;/span&gt;&lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="err"&gt;了，有点小兴奋，保持状态，&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;go&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt;&lt;span class="err"&gt;！&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;
+&lt;p&gt;刚新建好的repo是空的，github那里会有例子教你新建仓库或者将一个已存在的仓库push到github上面，此时可以在pelican的output目录下
+新建仓库了，主要就是以下五步曲(四步)：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;git init  #初始化一个git仓库，会生成.git目录，里面有git仓库所需要的各种文件，不用理它&lt;/li&gt;
+&lt;li&gt;git add .  #将当前目录的所有文件add到git仓库里，出于staged状态&lt;/li&gt;
+&lt;li&gt;git commit -m "banner"  #提交staged状态的文件&lt;/li&gt;
+&lt;li&gt;git remote add origin git@github.com:git-rain/git-rain.github.io.git  #在远程git-rain.github.io仓库创建一个名字叫做origin，这一步只需要一次&lt;/li&gt;
+&lt;li&gt;git push origin master   #推博客html文件到origin仓库(即git-rain.github.io仓库)的master分支上&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;注：最后推的时候，博主用的url是git@github.com:git-rain/git-rain.github.io.git即ssh形式，其实新建仓库的时候，github那里就会显示有两个url可以访问你的github pages，一个是https://github.com/id/repo.git的形式，另外一个是git@github.com:id/repo.git，第一种方法基于https，第二种方法基于ssh，都是加密的安全传输；不过第一种方法要手动输入github账号的用户名密码，每次都要输入很麻烦而且在脚本中不好实现自动pull代码，第二种方法只要将本地ssl公钥上传到github上面既可实现不用输入用户名密码直接pull代码，很明显博主这里用的是第二种方法，如下：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1.本地生成ssl公私密钥对，ssh-keygen -t rsa -f ~/.ssh/id_rsa -C 123@56.com #注：这里最好用默认的存放密钥的路径，否则git push可能会找不到私钥&lt;/p&gt;
+&lt;p&gt;2.将公钥内容上传到github，点击Edit profile那里的SSH keys按钮，粘贴进去，注意要将id_rsa.pub的全部内容粘贴&lt;/p&gt;
+&lt;p&gt;3.然后ssh -T git@github.com，如果看到Hi git-rain! You've successfully authenticated, but GitHub does not provide shell access.类似的提示，则验证成功&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;将博客html文件push上去之后，可以用git-rain.github.io去访问一下，发现已经可以访问了，网上很多人说push完成之后要等十分钟左右，博主比较幸运，上传完成立即就可以访问了，终于在github上面看到自己亲手搭建起来的blog了，有点小兴奋，保持状态，&lt;strong&gt;go on！&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;pelican结合disqus&lt;/h3&gt;
+&lt;p&gt;此时很遗憾地发现blog竟没有评论系统，pelican本身没有此功能，不过支持disqus这个大众的三方评论系统，默认很多themes都是启用了该支持的，不过神坑的就是博主一开始不知道pelican3.5.0默认的themes是不支持disqus的，后来在&lt;a href="http://querbalken.net/howto-setup-comments-with-disqus-in-pelican-en.html"&gt;这篇blog&lt;/a&gt;得到了帮助，很明显这也是一篇和博主一样类型的blog。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;PS：网上很多中文的教程没有说到这一点，他们使用的themes都是支持disqus的，所以直接忽略了这点，对于我们小白来说，也是致命的伤害啊，所以博主建议以后多用google(fq自己解决，多看英文资料)
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h3&gt;pelican结合disqus&lt;/h3&gt;
-&lt;p&gt;此时很遗憾地发现blog竟没有评论系统，pelican本身没有此功能，不过支持disqus这个大众的三方评论系统，默认很多themes都是启用了该支持的，不过神坑的就是博主一开始不知道pelican3.5.0默认的themes是不支持disqus的，后来在&lt;a href="http://querbalken.net/howto-setup-comments-with-disqus-in-pelican-en.html"&gt;这篇blog&lt;/a&gt;得到了帮助，很明显这也是一篇和博主一样类型的blog。PS：网上很多中文的教程没有说到这一点，他们使用的themes都是支持disqus的，所以直接忽略了这点，对于我们小白来说，也是致命的伤害啊，所以博主建议以后多用google(fq自己解决，多看英文资料)&lt;/p&gt;
 &lt;p&gt;后来楼主使用的themes是new-bootstrap2，效果挺不错的，也支持disqus,现在要做的就是去disqus上面申请一个站绑定你blog的域名可以去&lt;a href="https://disqus.com/"&gt;disqus 官网&lt;/a&gt;注册一个账号，并且add your site to disqus，上面要填的主要是blog的域名和disqus的shortname，注意shortname必须unique，而且一旦add成功了要记下来然后回到pelican，配置一下pelicanconf.py文件，增加一条：DISQUS_STIENAME = "shortname"&lt;/p&gt;
 &lt;p&gt;其实pelicanconf.py还可以配置很多东西，详细可以参考&lt;a href="http://docs.getpelican.com/en/3.2/settings.html"&gt;pelican配置&lt;/a&gt;，由于这里是菜鸟脱白，就不说了，其实重点是博主我也不懂！&lt;/p&gt;
-&lt;p&gt;配置完成后，按照老套路，make html，其实本地查看已经发现有评论系统了，四部曲将代码push到github，然后刷新一下浏览器，见证奇迹的时刻到了，可以正常评论blog了，一个基本的blog就这样完成了，很感谢网上各位大神的帮助，帮助小白搭建blog，也希望大家能够按照此教程完成自己blog的搭建，赶快join github把，要不然就真的很out了，当然现在也已经out了。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">rain</dc:creator><pubDate>Tue, 03 Feb 2015 10:20:00 +0800</pubDate><guid>tag:,2015-02-03:my-post.html</guid><category>Pelican</category><category>Python</category><category>GitHub</category><category>Git</category><category>Blog</category></item></channel></rss>
+&lt;p&gt;配置完成后，按照老套路，make html，其实本地查看已经发现有评论系统了，四部曲将代码push到github，然后刷新一下浏览器，见证奇迹的时刻到了，可以正常评论blog了，一个基本的blog就这样完成了，很感谢网上各位大神的帮助，帮助小白搭建blog，也希望大家能够按照此教程完成自己blog的搭建，赶快join github把，要不然就真的很out了，当然现在也已经out了。&lt;/p&gt;
+&lt;p&gt;还有关于博客内容格式的问题，其实就是md使用习惯的问题，看你md用得怎么样了，如果很熟练的话，排出来的格式可以很好看，博主就是不会用md，所以博客排版格式很恶心，哈哈！&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">rain</dc:creator><pubDate>Tue, 03 Feb 2015 10:20:00 +0800</pubDate><guid>tag:,2015-02-03:my-post.html</guid><category>Pelican</category><category>Python</category><category>GitHub</category><category>Git</category><category>Blog</category></item></channel></rss>
